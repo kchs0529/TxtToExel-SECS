@@ -1,6 +1,6 @@
 # TxtToExel-SECS
 
-SECS (SEMI Equipment Communication Standard) 로그 파일을 Excel 파일로 변환하는 Java 기반 도구입니다. 반도체 장비와의 통신 로그를 정형화하여 분석하기 쉽게 만들어주는 데 목적이 있습니다.
+SECS (SEMI Equipment Communication Standard) 로그 파일을 Excel 파일로 변환하는 Java 기반 도구입니다.
 
 ## 📁 프로젝트 구조
 
