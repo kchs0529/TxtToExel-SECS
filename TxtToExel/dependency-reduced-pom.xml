@@ -5,7 +5,7 @@
   <artifactId>TxtToExel</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <build>
-    <finalName>FDC_Parser</finalName>
+    <finalName>TxtToExelConverter</finalName>
     <plugins>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>

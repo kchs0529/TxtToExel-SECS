@@ -53,6 +53,6 @@
     </plugins>
 
     <!-- 생성될 JAR 이름 설정 -->
-    <finalName>FDC_Parser</finalName>
+    <finalName>TxtToExelConverter</finalName>
   </build>
 </project>
