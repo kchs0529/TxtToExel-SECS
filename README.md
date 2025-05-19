@@ -8,7 +8,7 @@ SECS (SEMI Equipment Communication Standard) 로그 파일을 Excel 파일로 �
 TxtToExel-SECS/
 ├── src/
 │   └── TxtToExelConverter.java      # 메인 실행 파일
-├── lib/                             # 사용되는 라이브러리 (선택적)
+├── pom.xml                           # Maven 설정파일(Apache POI 사용)
 ├── README.md                        # 본 문서
 ├── .gitignore
 ```
