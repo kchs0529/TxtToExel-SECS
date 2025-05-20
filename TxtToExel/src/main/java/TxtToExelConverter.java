@@ -121,7 +121,7 @@ public class TxtToExelConverter {
             line.setLineWidth(1.0);
 
             // 세 번째 줄: 단위
-            String[] units = {"deg", "deg", "deg", "sec", "", "cs", "cs", "s", "cs", "cs", "s", "cs", "cs", "s", "amu", "K", "K", "K", "K", "sccm", "C", "sccm", "mA", "mA", "kV", "kV", "keV", "", "sccm", "", "", "", "", "", "Torr", "Torr", "Torr", "deg", "", "", "%", "C", "cnts", "mm", "", "%", "", "min", "mm", "ions/cm2", "min", "C", "Torr", "cnts", "cnts", "cnts", "cnts", "cnts", "mm", "mm", "mA", "kV", "kV", "kGauss", "kGauss", "", "", "V", "V", "", "", "kV", "", "", "mA", "amu", "%", "%", "%", "", "MOhmcm", "ml", "ml", "ml", "ml", "ml", "ml", "ml", "cm/s", "min", "min", "psig", "cnts", "C", "MOhmcm", "%", "Torr", "cnts", "ions/cm2", "ions/cm2", "deg", "deg", "kV", "kV", "day", "day", "day", "day", "day", "day", "day", "day", "day", "day", "day", "day" };
+            String[] units = {"deg", "deg", "deg", "sec", "", "cs", "cs", "s", "cs", "cs", "s", "cs", "cs", "s", "amu", "K", "K", "K", "K", "sccm", "C", "sccm", "mA", "mA", "kV", "kV", "keV", "", "sccm", "", "", "", "", "", "Torr", "Torr", "Torr", "deg", "", "", "%", "C", "cnts", "mm", "", "%", "","", "min","", "mm", "ions/cm2", "min", "C", "Torr", "cnts", "cnts", "cnts", "cnts", "cnts", "mm", "mm", "mA", "kV", "kV", "kGauss", "kGauss", "", "", "V", "V", "", "", "kV", "", "","", "mA", "amu", "%", "%", "%", "", "MOhmcm", "ml", "ml", "ml", "ml", "ml", "ml", "ml", "cm/s", "min", "min", "psig", "cnts", "C", "MOhmcm", "%", "Torr", "cnts", "ions/cm2", "ions/cm2", "deg", "deg", "kV", "kV", "day", "day", "day", "day", "day", "day", "day", "day", "day", "day", "day", "day" };
             for (int i = 0; i < units.length; i++) {
             	Cell cell = headerRow2.createCell(i+1);
                 cell.setCellValue(units[i]);
@@ -132,10 +132,14 @@ public class TxtToExelConverter {
             int rowIndex = 3;
 
 
+//            Pattern timestampPattern = Pattern.compile("^\\[(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d+)\\s+S1F4V11\\]");
+//            Pattern dataPattern = Pattern.compile("\\[(.*?)\\]");
+//            Pattern lStreamPattern = Pattern.compile("^L\\[\\d+\\]\\[\\]");
+//            Pattern lListPattern = Pattern.compile("^\\s*L\\[\\d+\\]");
+            
             Pattern timestampPattern = Pattern.compile("^\\[(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d+)\\s+S1F4V11\\]");
             Pattern dataPattern = Pattern.compile("\\[(.*?)\\]");
-            Pattern lStreamPattern = Pattern.compile("^L\\[\\d+\\]\\[\\]");
-            Pattern lListPattern = Pattern.compile("^\\s*L\\[\\d+\\]");
+            Pattern lListPattern = Pattern.compile("^\\s*L\\[\\d+\\](\\[\\])?");
 
             List dataBuffer = new ArrayList();
             String rawLine;
@@ -164,27 +168,24 @@ public class TxtToExelConverter {
                     continue;
                 }
 
-                if (lStreamPattern.matcher(trimmedLine).matches()) {
-                    lCount++;
-                    continue;
-                }
-
-                Matcher lMatcher = lListPattern.matcher(rawLine);
+                Matcher lMatcher = lListPattern.matcher(trimmedLine);
                 if (lMatcher.find()) {
                     lCount++;
-                    if (lCount >= 2) {
-                        dataBuffer.add("List");
+                    if (lCount == 1) {
+                        // 첫 번째 L[...] 또는 L[...][]는 무시
+                        continue;
+                    } else {
+                    	// 두 번째  L[...] 또는 L[...][] 부터는 List item이 들어가도록 변경
+                        dataBuffer.add("List item");
                         afterSecondL = true;
                         allowSingleIndent = true;
-                    } else {
-                        afterSecondL = false;
-                        allowSingleIndent = false;
+                        continue;
                     }
-                    continue;
                 }
 
                 int indentLevel = countIndentLevel(rawLine);
 
+                //1번 들여쓰기까지는 데이터 기록, 2번부터는 기록x
                 if (afterSecondL) {
                     if (indentLevel == 1 && allowSingleIndent) {
                         // 한 번 들여쓰기까지만 허용
