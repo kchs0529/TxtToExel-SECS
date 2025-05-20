@@ -6,12 +6,18 @@ SECS (SEMI Equipment Communication Standard) 로그 파일을 Excel 파일로 �
 
 ```
 TxtToExel-SECS/
+├── .settings/                      # Eclipse 설정 파일
 ├── src/
-│   └── TxtToExelConverter.java      # 메인 실행 파일
-├── pom.xml                          # Maven 설정파일 (Apache POI 사용)
-├── README.md                        # 본 문서
-├── .gitignore
+│   └── main/
+│       └── java/
+│           └── TxtToExelConverter.java   # 메인 실행 파일
+├── target/                         # 빌드 결과물 (.jar 등)
+├── .classpath                     # Eclipse 클래스 경로 설정
+├── .project                       # Eclipse 프로젝트 설정
+├── dependency-reduced-pom.xml    # 쉐이딩된 Maven 의존성 설정
+├── pom.xml                        # Maven 기본 설정파일 (Apache POI 등 포함)
 ```
+
 
 ##  주요 기능
 
