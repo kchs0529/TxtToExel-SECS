@@ -8,7 +8,7 @@ SECS (SEMI Equipment Communication Standard) 로그 파일을 Excel 파일로 �
 TxtToExel-SECS/
 ├── src/
 │   └── TxtToExelConverter.java      # 메인 실행 파일
-├── pom.xml                           # Maven 설정파일(Apache POI 사용)
+├── pom.xml                          # Maven 설정파일 (Apache POI 사용)
 ├── README.md                        # 본 문서
 ├── .gitignore
 ```
@@ -33,7 +33,7 @@ TxtToExel-SECS/
    * Java 8 이상 필요
    * `TxtToExelConverter.java`를 실행하면 GUI 파일 선택창이 나타납니다.
    * 변환 대상 텍스트 파일을 선택하고, 출력 엑셀 파일명을 입력하면 변환이 시작됩니다.
-   * target 폴더 내에 있는 TxtToExelConverter.jar를 TxtToExelConverter.bat파일과 같은 폴더에 넣은 후 bat 파일을 실행하셔도 됩니다.
+   * target 폴더 내에 있는 TxtToExelConverter.jar를 TxtToExelConverter.bat 파일과 같은 폴더에 넣은 후 bat 파일을 실행하셔도 됩니다.
 
 3. **출력 파일 확인**
 
@@ -41,6 +41,35 @@ TxtToExel-SECS/
 
 ## 📝 주의사항
 
-* 로그 파일은 SVID가 포함된 SECS 로그 형식을 따릅니다.
+* 로그 파일은 SVID가 포함된 SECS 로그 형식을 따라야 합니다.
 * 입력 형식이 맞지 않으면 변환이 실패할 수 있습니다.
-* 첫번째 List 이후에 나오는 List들은 List 내부에 있는 데이터 값은 추출하지 않고 List라는 문자열로 출력됩니다.
+* 첫 번째 List 이후에 나오는 List들은 List 내부에 있는 데이터 값은 추출하지 않고 "List item"이라는 문자열로 출력됩니다.
+
+## 📄 입력 로그 예시
+
+```
+[2025-05-20 09:00:00.000 S1F4V11]
+L[2][]
+    [Item1]
+    L[2][]
+        [NestedItem1]
+        [NestedItem2]
+[2025-05-20 09:01:00.000 S1F4V11]
+L[1][]
+    [100]
+    [200]
+    [300]
+```
+
+## 📤 출력 엑셀 예시 (Excel)
+
+| Unit/Time               | 항목1       | 항목2   | 항목3       | 항목4 |
+| ----------------------- | --------- | ----- | --------- | --- |
+| 2025-05-20 09:00:00.000 | List item | Item1 | List item |     |
+| 2025-05-20 09:01:00.000 | List item | 100   | 200       | 300 |
+
+>  **보조 설명**
+>
+> * 중첩 List (`indentLevel >= 2`) 내부의 값은 무시됩니다.(2번 이상 들여쓰기 한 값)
+> * 두 번째 이후 `L[...][]`는 "List item"으로 표시됩니다.
+> * `[ ]` 안의 값은 그대로 Excel에 입력되며, 빈 `[]`는 공백("")으로 채워집니다.
