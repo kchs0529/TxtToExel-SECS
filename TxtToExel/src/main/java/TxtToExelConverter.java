@@ -69,67 +69,67 @@ public class TxtToExelConverter {
             borderStyle.setBorderLeft(BorderStyle.THIN);
             borderStyle.setBorderRight(BorderStyle.THIN);
 
-            // 3줄 헤더 설정
-            Row headerRow0 = sheet.createRow(0);
-            Row headerRow1 = sheet.createRow(1);
-            Row headerRow2 = sheet.createRow(2);
+//            // 3줄 헤더 설정
+//            Row headerRow0 = sheet.createRow(0);
+//            Row headerRow1 = sheet.createRow(1);
+//            Row headerRow2 = sheet.createRow(2);
+//
+//            // 헤더 추가
+//            String[] headers = new String[] {
+//                "Item Name", "OrientAngleOffset", "AutomatedAngleOffset", "XTiltHomeOffsetEC", "CarrierCompleteAlertTime", "ProcessStep", "WaferStartTime", "WaferEndTime", "WaferElapsedTime", "CarrierStartTime", "CarrierEndTime", "CarrierElapsedTime", "StepStartTime", "StepEndTime", "StepElapsedTime", "AMU", "CryoP2Temperature", "CryoP3Temperature", "CryoP4Temperature", "CryoP5Temperature", "DilutionGasFlow", "DIWaterTemperature", "DopantGasFlow", "ExtractionCurrent", "ExtractionSuppressionCurr", "ExtractionSuppressionVolt", "ExtractionVoltage", "FinalBeamEnergy", "FloodgunArcCurrent", "FloodgunGasFlow", "GasBottle1Pressure", "GasBottle2Pressure", "GasBottle3Pressure", "GasBottle4Pressure", "GasBottle5Pressure", "IG1Pressure", "IG2Pressure", "IG3Pressure", "ImplantAngle", "ImplantCurrent", "ImplantMapCurrent", "ImplantPercentComplete", "MainWaterTemperature", "OrientAngle", "ResolvingAperaturePos", "SetupCupBeamCurrent", "Sigma", "SourceBeamCurrent", "SourceMagnetCurrent", "SourceTuneTime", "Specie", "ThetaAxis", "TotalDose", "TotalTuneTime", "VaporizerTemperature", "WaferCooling", "WaferCurrentPass", "WaferCurrentStep", "WaferSteps", "WaferTotalPasses", "WaferTotalPassNumber", "Yaxis", "Zaxis", "AccelCurrent", "AccelSupprVolt", "AccelVoltage", "AnalyzerField1", "AnalyzerField2", "ArcCurrent1", "ArcCurrent2", "ArcVoltage1", "ArcVoltage2", "BeamEnergy", "Charge", "DecelVoltage", "FilamentCurrent1", "FilamentCurrent2", "FloodGunFilCurrent", "FocusCurrent", "IonMass", "MaxDose", "MeanDose", "MinDose", "NumberOfGlitches", "DIResistivity", "MFC1TotalFlow", "MFC2TotalFlow", "MFC3TotalFlow", "MFC4TotalFlow", "MFC5TotalFlow", "MFC6TotalFlow", "PFGGasTotalFlow", "DoseMapVelocity", "PFGHotTime", "PFGWarmTime", "PFGXeGasPressure", "WaferOnOrientor", "ChillerTemperature", "ChillerResistivity", "DoseTrimActual", "ImplantChamberPressure", "ImplantCurrentProcessStep", "ImplantTotalDose", "DoseStep1", "ImplantAngleStep1", "OrientAngleStep1", "AccelControllerVoltageProgramValue", "AccelSuppControllerVoltProgramValue", "IG1Filament1Life", "IG1Filament2Life", "IG2Filament1Life", "IG2Filament2Life", "IG3Filament1Life", "IG3Filament2Life", "IG4Filament1Life", "IG4Filament2Life", "IG5Filament1Life", "IG5Filament2Life", "IG7Filament1Life", "IG7Filament2Life"
+//            };
+//            
+//            // 첫 번째 줄: 항목 이름
+//            for (int i = 0; i < headers.length; i++) {
+//                Cell cell = headerRow0.createCell(i);
+//                cell.setCellValue(headers[i]);
+//                cell.setCellStyle(borderStyle);
+//            }
+//
+//            // 두 번째 줄: SVID
+//            String[] svids = { "SVID", "40", "41", "70", "94", "199", "221", "222", "223", "224", "225", "226", "227", "228", "229", "5010", "5180", "5190", "5200", "5210", "5230", "5240", "5250", "5270", "5280", "5290", "5300", "5320", "5330", "5340", "5350", "5360", "5370", "5380", "5390", "5400", "5410", "5420", "5430", "5440", "5470", "5480", "6050", "6060", "6190", "6750", "6760", "6800", "6810", "6820", "6830", "6840", "6850", "6860", "6900", "6910", "6930", "6940", "6950", "6960", "6970", "6980", "6990", "7500", "7510", "7520", "7530", "7540", "7550", "7560", "7570", "7580", "7590", "7600", "7630", "7640", "7650", "7680", "7690", "7710", "7720", "7730", "7740", "7750", "10160", "12500", "12510", "12520", "12530", "12540", "12550", "12560", "12580", "12590", "12600", "12630", "12970", "15270", "15280", "15300", "15340", "15350", "15360", "16980", "16990", "17000", "17030", "17040", "31040", "31050", "31060", "31070", "31080", "31090", "31100", "31110", "31120", "31130", "31140", "31150" };
+//            for (int i = 0; i < svids.length; i++) {
+//            	Cell cell = headerRow1.createCell(i);
+//                cell.setCellValue(svids[i]);
+//                cell.setCellStyle(borderStyle);
+//            }
+//            
+//            // 셀 스타일 정의 (줄바꿈 + 중앙 정렬)
+//            CellStyle cornerStyle = workbook.createCellStyle();
+//            cornerStyle.setWrapText(true);
+//            cornerStyle.setAlignment(HorizontalAlignment.CENTER);
+//            cornerStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+//
+//            // (2,0) 셀 = 3번째 줄 첫 번째 셀
+//            Cell diagonalCell = headerRow2.createCell(0);
+//            diagonalCell.setCellStyle(cornerStyle);
+//            diagonalCell.setCellValue("Unit\nTime");
+//
+//            // 도형 대각선 + 셀 크기 조정
+//            sheet.setColumnWidth(0, 15 * 256);
+//            headerRow2.setHeightInPoints(40);
+//
+//            XSSFDrawing drawing = ((XSSFSheet) sheet).createDrawingPatriarch();
+//            XSSFClientAnchor anchor = new XSSFClientAnchor(
+//                0, 0, 1023, 255,
+//                0, 2, 1, 3
+//            );
+//            anchor.setAnchorType(ClientAnchor.AnchorType.MOVE_AND_RESIZE);
+//
+//            XSSFSimpleShape line = drawing.createSimpleShape(anchor);
+//            line.setShapeType(ShapeTypes.LINE);
+//            line.setLineWidth(1.0);
+//
+//            // 세 번째 줄: 단위
+//            String[] units = {"deg", "deg", "deg", "sec", "", "cs", "cs", "s", "cs", "cs", "s", "cs", "cs", "s", "amu", "K", "K", "K", "K", "sccm", "C", "sccm", "mA", "mA", "kV", "kV", "keV", "", "sccm", "", "", "", "", "", "Torr", "Torr", "Torr", "deg", "", "", "%", "C", "cnts", "mm", "", "%", "","", "min","", "mm", "ions/cm2", "min", "C", "Torr", "cnts", "cnts", "cnts", "cnts", "cnts", "mm", "mm", "mA", "kV", "kV", "kGauss", "kGauss", "", "", "V", "V", "", "", "kV", "", "","", "mA", "amu", "%", "%", "%", "", "MOhmcm", "ml", "ml", "ml", "ml", "ml", "ml", "ml", "cm/s", "min", "min", "psig", "cnts", "C", "MOhmcm", "%", "Torr", "cnts", "ions/cm2", "ions/cm2", "deg", "deg", "kV", "kV", "day", "day", "day", "day", "day", "day", "day", "day", "day", "day", "day", "day" };
+//            for (int i = 0; i < units.length; i++) {
+//            	Cell cell = headerRow2.createCell(i+1);
+//                cell.setCellValue(units[i]);
+//                cell.setCellStyle(borderStyle);
+//            }
 
-            // 헤더 추가
-            String[] headers = new String[] {
-                "Item Name", "OrientAngleOffset", "AutomatedAngleOffset", "XTiltHomeOffsetEC", "CarrierCompleteAlertTime", "ProcessStep", "WaferStartTime", "WaferEndTime", "WaferElapsedTime", "CarrierStartTime", "CarrierEndTime", "CarrierElapsedTime", "StepStartTime", "StepEndTime", "StepElapsedTime", "AMU", "CryoP2Temperature", "CryoP3Temperature", "CryoP4Temperature", "CryoP5Temperature", "DilutionGasFlow", "DIWaterTemperature", "DopantGasFlow", "ExtractionCurrent", "ExtractionSuppressionCurr", "ExtractionSuppressionVolt", "ExtractionVoltage", "FinalBeamEnergy", "FloodgunArcCurrent", "FloodgunGasFlow", "GasBottle1Pressure", "GasBottle2Pressure", "GasBottle3Pressure", "GasBottle4Pressure", "GasBottle5Pressure", "IG1Pressure", "IG2Pressure", "IG3Pressure", "ImplantAngle", "ImplantCurrent", "ImplantMapCurrent", "ImplantPercentComplete", "MainWaterTemperature", "OrientAngle", "ResolvingAperaturePos", "SetupCupBeamCurrent", "Sigma", "SourceBeamCurrent", "SourceMagnetCurrent", "SourceTuneTime", "Specie", "ThetaAxis", "TotalDose", "TotalTuneTime", "VaporizerTemperature", "WaferCooling", "WaferCurrentPass", "WaferCurrentStep", "WaferSteps", "WaferTotalPasses", "WaferTotalPassNumber", "Yaxis", "Zaxis", "AccelCurrent", "AccelSupprVolt", "AccelVoltage", "AnalyzerField1", "AnalyzerField2", "ArcCurrent1", "ArcCurrent2", "ArcVoltage1", "ArcVoltage2", "BeamEnergy", "Charge", "DecelVoltage", "FilamentCurrent1", "FilamentCurrent2", "FloodGunFilCurrent", "FocusCurrent", "IonMass", "MaxDose", "MeanDose", "MinDose", "NumberOfGlitches", "DIResistivity", "MFC1TotalFlow", "MFC2TotalFlow", "MFC3TotalFlow", "MFC4TotalFlow", "MFC5TotalFlow", "MFC6TotalFlow", "PFGGasTotalFlow", "DoseMapVelocity", "PFGHotTime", "PFGWarmTime", "PFGXeGasPressure", "WaferOnOrientor", "ChillerTemperature", "ChillerResistivity", "DoseTrimActual", "ImplantChamberPressure", "ImplantCurrentProcessStep", "ImplantTotalDose", "DoseStep1", "ImplantAngleStep1", "OrientAngleStep1", "AccelControllerVoltageProgramValue", "AccelSuppControllerVoltProgramValue", "IG1Filament1Life", "IG1Filament2Life", "IG2Filament1Life", "IG2Filament2Life", "IG3Filament1Life", "IG3Filament2Life", "IG4Filament1Life", "IG4Filament2Life", "IG5Filament1Life", "IG5Filament2Life", "IG7Filament1Life", "IG7Filament2Life"
-            };
-            
-            // 첫 번째 줄: 항목 이름
-            for (int i = 0; i < headers.length; i++) {
-                Cell cell = headerRow0.createCell(i);
-                cell.setCellValue(headers[i]);
-                cell.setCellStyle(borderStyle);
-            }
-
-            // 두 번째 줄: SVID
-            String[] svids = { "SVID", "40", "41", "70", "94", "199", "221", "222", "223", "224", "225", "226", "227", "228", "229", "5010", "5180", "5190", "5200", "5210", "5230", "5240", "5250", "5270", "5280", "5290", "5300", "5320", "5330", "5340", "5350", "5360", "5370", "5380", "5390", "5400", "5410", "5420", "5430", "5440", "5470", "5480", "6050", "6060", "6190", "6750", "6760", "6800", "6810", "6820", "6830", "6840", "6850", "6860", "6900", "6910", "6930", "6940", "6950", "6960", "6970", "6980", "6990", "7500", "7510", "7520", "7530", "7540", "7550", "7560", "7570", "7580", "7590", "7600", "7630", "7640", "7650", "7680", "7690", "7710", "7720", "7730", "7740", "7750", "10160", "12500", "12510", "12520", "12530", "12540", "12550", "12560", "12580", "12590", "12600", "12630", "12970", "15270", "15280", "15300", "15340", "15350", "15360", "16980", "16990", "17000", "17030", "17040", "31040", "31050", "31060", "31070", "31080", "31090", "31100", "31110", "31120", "31130", "31140", "31150" };
-            for (int i = 0; i < svids.length; i++) {
-            	Cell cell = headerRow1.createCell(i);
-                cell.setCellValue(svids[i]);
-                cell.setCellStyle(borderStyle);
-            }
-            
-            // 셀 스타일 정의 (줄바꿈 + 중앙 정렬)
-            CellStyle cornerStyle = workbook.createCellStyle();
-            cornerStyle.setWrapText(true);
-            cornerStyle.setAlignment(HorizontalAlignment.CENTER);
-            cornerStyle.setVerticalAlignment(VerticalAlignment.CENTER);
-
-            // (2,0) 셀 = 3번째 줄 첫 번째 셀
-            Cell diagonalCell = headerRow2.createCell(0);
-            diagonalCell.setCellStyle(cornerStyle);
-            diagonalCell.setCellValue("Unit\nTime");
-
-            // 도형 대각선 + 셀 크기 조정
-            sheet.setColumnWidth(0, 15 * 256);
-            headerRow2.setHeightInPoints(40);
-
-            XSSFDrawing drawing = ((XSSFSheet) sheet).createDrawingPatriarch();
-            XSSFClientAnchor anchor = new XSSFClientAnchor(
-                0, 0, 1023, 255,
-                0, 2, 1, 3
-            );
-            anchor.setAnchorType(ClientAnchor.AnchorType.MOVE_AND_RESIZE);
-
-            XSSFSimpleShape line = drawing.createSimpleShape(anchor);
-            line.setShapeType(ShapeTypes.LINE);
-            line.setLineWidth(1.0);
-
-            // 세 번째 줄: 단위
-            String[] units = {"deg", "deg", "deg", "sec", "", "cs", "cs", "s", "cs", "cs", "s", "cs", "cs", "s", "amu", "K", "K", "K", "K", "sccm", "C", "sccm", "mA", "mA", "kV", "kV", "keV", "", "sccm", "", "", "", "", "", "Torr", "Torr", "Torr", "deg", "", "", "%", "C", "cnts", "mm", "", "%", "","", "min","", "mm", "ions/cm2", "min", "C", "Torr", "cnts", "cnts", "cnts", "cnts", "cnts", "mm", "mm", "mA", "kV", "kV", "kGauss", "kGauss", "", "", "V", "V", "", "", "kV", "", "","", "mA", "amu", "%", "%", "%", "", "MOhmcm", "ml", "ml", "ml", "ml", "ml", "ml", "ml", "cm/s", "min", "min", "psig", "cnts", "C", "MOhmcm", "%", "Torr", "cnts", "ions/cm2", "ions/cm2", "deg", "deg", "kV", "kV", "day", "day", "day", "day", "day", "day", "day", "day", "day", "day", "day", "day" };
-            for (int i = 0; i < units.length; i++) {
-            	Cell cell = headerRow2.createCell(i+1);
-                cell.setCellValue(units[i]);
-                cell.setCellStyle(borderStyle);
-            }
-
-            // 데이터는 4번째 줄부터
-            int rowIndex = 3;
+            // 데이터는 1번째 줄부터
+            int rowIndex = 0;
 
 
 //            Pattern timestampPattern = Pattern.compile("^\\[(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d+)\\s+S1F4V11\\]");
@@ -137,7 +137,7 @@ public class TxtToExelConverter {
 //            Pattern lStreamPattern = Pattern.compile("^L\\[\\d+\\]\\[\\]");
 //            Pattern lListPattern = Pattern.compile("^\\s*L\\[\\d+\\]");
             
-            Pattern timestampPattern = Pattern.compile("^\\[(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d+)\\s+S1F4V11\\]");
+            Pattern timestampPattern = Pattern.compile("^\\[(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d+)");
             Pattern dataPattern = Pattern.compile("\\[(.*?)\\]");
             Pattern lListPattern = Pattern.compile("^\\s*L\\[\\d+\\](\\[\\])?");
 
